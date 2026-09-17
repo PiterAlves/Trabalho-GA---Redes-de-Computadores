@@ -1,0 +1,11 @@
+# 1. Caches do Python
+__pycache__/
+*.pyc
+
+# 2. Configurações locais do VSCode
+.vscode/
+.idea/
+
+# 3. Arquivos sincronizados na pasta de teste
+tmp/*
+!tmp/.gitkeep

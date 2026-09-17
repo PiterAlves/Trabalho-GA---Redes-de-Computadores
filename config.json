@@ -1,0 +1,19 @@
+{
+  "meu_nodo": {
+    "ip": "0.0.0.0",
+    "porta": 5000
+  },
+  "pasta_sincronizada": "tmp",
+  "peers": [
+    {
+      "nome": "Peer-Piter-Windows",
+      "ip": "192.168.3.11",
+      "porta": 5000
+    },
+    {
+      "nome": "Peer-VM-Linux",
+      "ip": "192.168.3.45",
+      "porta": 5000
+    }
+  ]
+}
