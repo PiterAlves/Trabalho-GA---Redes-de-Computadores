@@ -6,12 +6,12 @@
   "pasta_sincronizada": "tmp",
   "peers": [
     {
-      "nome": "Peer-Piter-Windows",
+      "nome": "Peer-A",
       "ip": "192.168.3.11",
       "porta": 5000
     },
     {
-      "nome": "Peer-VM-Linux",
+      "nome": "Peer-B",
       "ip": "192.168.3.45",
       "porta": 5000
     }
