@@ -54,3 +54,15 @@ Edite o arquivo `config.json` para definir o seu IP/porta e adicionar os endere�
     }
   ]
 }
+```
+
+### Como Executar
+Copie o projeto para a sua maquina, ajuste o `config.json` se necessário (ou passe a porta/config) e rode:
+```bash
+python3 nodo.py
+```
+
+### Teste em uma única máquina (Dois terminais locais):
+Se quiser testar sem a VM primeiro:
+- Terminal 1: `python nodo.py --porta 5000`
+- Terminal 2: `python nodo.py --porta 5001` (ajuste um config separado com outra pasta ou teste direto)
