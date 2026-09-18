@@ -9,3 +9,6 @@ __pycache__/
 # 3. Arquivos sincronizados na pasta de teste
 tmp/*
 !tmp/.gitkeep
+
+# 4. Ignora o Json
+config.json
