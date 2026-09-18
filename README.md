@@ -15,19 +15,7 @@ Projeto desenvolvido para a disciplina de **Redes de Computadores: Aplicação e
 - **Critério 8:** Comando `status` interativo no terminal exibindo informações sumarizadas.
 
 ## Como Executar
-
-### 1. No Host (Windows):
-```bash
-python nodo.py
-```
-
-### 2. Na Máquina Virtual (Linux):
-Copie o projeto para a VM, ajuste o `config.json` se necessário (ou passe a porta/config) e rode:
+Copie o projeto para a sua maquina, ajuste o `config.json` se necessário (ou passe a porta/config) e rode:
 ```bash
 python3 nodo.py
 ```
-
-### 3. Teste em uma única máquina (Dois terminais locais):
-Se quiser testar sem a VM primeiro:
-- Terminal 1: `python nodo.py --porta 5000`
-- Terminal 2: `python nodo.py --porta 5001` (ajuste um config separado com outra pasta ou teste direto)

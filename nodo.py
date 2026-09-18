@@ -37,7 +37,7 @@ class PeerNode:
         print(f"[*] Arquivos iniciais: {list(self.arquivos_locais)}")
 
     def enviar_mensagem(self, msg_dict, ip_dest, porta_dest):
-        """Envia mensagem serializada em JSON via UDP"""
+        # Envia mensagem serializada em JSON via UDP
         try:
             dados = json.dumps(msg_dict).encode("utf-8")
             self.sock.sendto(dados, (ip_dest, porta_dest))
@@ -49,13 +49,12 @@ class PeerNode:
         for peer in self.peers:
             p_ip = peer["ip"]
             p_porta = peer["porta"]
-            # Evita enviar para si mesmo caso esteja na mesma máquina com a mesma porta
             if (p_ip in ["127.0.0.1", "localhost", self.meu_ip]) and (p_porta == self.minha_porta):
                 continue
             self.enviar_mensagem(msg_dict, p_ip, p_porta)
 
     def thread_escuta(self):
-        """Servidor UDP: escuta e processa todas as mensagens de entrada"""
+        # Servidor UDP: escuta e processa todas as mensagens de entrada
         while self.running:
             try:
                 dados_brutos, addr = self.sock.recvfrom(65507)
@@ -136,7 +135,7 @@ class PeerNode:
                     self.enviar_mensagem({"tipo": "PEDIR", "nome": arq}, addr[0], addr[1])
 
     def enviar_arquivo_fatiado(self, nome, addr):
-        """Lê o arquivo local, divide em blocos de 1KB e envia em datagramas UDP com base64"""
+        # Lê o arquivo local, divide em blocos de 1KB e envia em datagramas UDP com base64
         caminho = os.path.join(self.pasta, nome)
         if not os.path.exists(caminho):
             return
@@ -164,7 +163,7 @@ class PeerNode:
             time.sleep(0.005)  # Pequeno delay para evitar buffer overflow em UDP
 
     def monitorar_pasta_local(self):
-        """Monitora periodicamente a pasta local tmp para detectar adições e remoções manuais"""
+        # Monitora periodicamente a pasta local tmp para detectar adições e remoções manuais
         while self.running:
             try:
                 arquivos_atuais = set(os.listdir(self.pasta))
@@ -192,7 +191,7 @@ class PeerNode:
             time.sleep(1.5)
 
     def iniciar_sincronizacao(self):
-        """Ao iniciar, pede a lista de arquivos para todos os peers (Fase 4 / Critério 10)"""
+        # Ao iniciar, pede a lista de arquivos para todos os peers (Fase 4 / Critério 10)
         print("[*] Enviando LISTA_REQ para os peers conhecidos...")
         self.broadcast({"tipo": "LISTA_REQ"})
 
