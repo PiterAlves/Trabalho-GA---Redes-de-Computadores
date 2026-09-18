@@ -129,10 +129,14 @@ class PeerNode:
         # 6. Resposta com o catálogo de arquivos
         elif tipo == "LISTA_RESP":
             arquivos_remotos = msg.get("arquivos", [])
+            arquivos_baixados = 0
             for arq in arquivos_remotos:
                 if arq not in os.listdir(self.pasta):
                     print(f"[*] Nodo novo se atualizando: solicitando '{arq}' de {addr}")
                     self.enviar_mensagem({"tipo": "PEDIR", "nome": arq}, addr[0], addr[1])
+                    arquivos_baixados += 1
+                if arquivos_baixados == 0:
+                    print("Verificação concluida: A pasta já está sincronizada com os peers conhecidos.")
 
     def enviar_arquivo_fatiado(self, nome, addr):
         # Lê o arquivo local, divide em blocos de 1KB e envia em datagramas UDP com base64
