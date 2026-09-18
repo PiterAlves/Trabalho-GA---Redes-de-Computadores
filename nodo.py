@@ -135,8 +135,9 @@ class PeerNode:
                     print(f"[*] Nodo novo se atualizando: solicitando '{arq}' de {addr}")
                     self.enviar_mensagem({"tipo": "PEDIR", "nome": arq}, addr[0], addr[1])
                     arquivos_baixados += 1
+                    
             if arquivos_baixados == 0:
-                print("Verificação concluida: A pasta já está sincronizada com os peers conhecidos.")
+                print(f"[V] Sincronizado com o peer {addr[0]}:{addr[1]} (nenhum arquivo novo).")
 
     def enviar_arquivo_fatiado(self, nome, addr):
         # Lê o arquivo local, divide em blocos de 1KB e envia em datagramas UDP com base64
